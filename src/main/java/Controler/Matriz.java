@@ -5,13 +5,15 @@
  */
 package Controler;
 
+import Model.LocalizacaoLetra;
+
 /**
  *
  * @author edil
  */
 public class Matriz {
     
-    String[][] matriz = new String[50][50];    
+    LocalizacaoLetra[][] matriz = new LocalizacaoLetra[50][50];    
     private String letra;
     private Integer linha;
     private Integer coluna;
@@ -20,30 +22,32 @@ public class Matriz {
      matriz = criarMatriz();
     }
     
-    public String[][] criarMatriz() {
+    public LocalizacaoLetra[][] criarMatriz() {
 
         for (int i = 0; i < matriz.length; i++) {
             System.out.println("");
             for (int j = 0; j < matriz[i].length; j++) {
                 Ascii objetoCaractere = new Ascii();
-                linha = i;
-                coluna = j;
-                letra = objetoCaractere.CaractereASCIIString();
-                matriz[i][j] = getLetra();// + getLinha() + getColuna();                
-                System.out.print(getLetra() + getLinha() + getColuna() + " ");
+                LocalizacaoLetra localizacaoLetra = new LocalizacaoLetra();
+                localizacaoLetra.setLinha(i);
+                localizacaoLetra.setColuna(j);
+                localizacaoLetra.setLetra(objetoCaractere.CaractereASCIIString());
+                
+                matriz[i][j] = localizacaoLetra;                
+                System.out.print(matriz[i][j].getLetra() + " ");// ou use matriz[i][j].toString()
             }
         }
         return matriz;
     }
     
-    public void mostrarMatriz(){
-        for (int i = 0; i < matriz.length; i++) {
-            System.out.println();
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j] + " ");
-            }
-        }
-    }
+//    public void mostrarMatriz(){
+//        for (int i = 0; i < matriz.length; i++) {
+//            System.out.println();
+//            for (int j = 0; j < matriz[i].length; j++) {
+//                System.out.print(matriz[i][j].getLetra() + " ");
+//            }
+//        }
+//    }
 
     public String getLetra() {
         return letra;

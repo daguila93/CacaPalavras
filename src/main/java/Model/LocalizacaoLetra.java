@@ -5,7 +5,6 @@
  */
 package Model;
 
-import Controler.Matriz;
 
 /**
  *
@@ -13,11 +12,9 @@ import Controler.Matriz;
  */
 public class LocalizacaoLetra {
     
-    Matriz matriz = new Matriz();
-    
-    private String letra = matriz.getLetra();
-    private Integer linha = matriz.getLinha();
-    private Integer coluna = matriz.getColuna();
+    private String letra;
+    private Integer linha;
+    private Integer coluna;
 
     
     public String getLetra() {
@@ -42,6 +39,11 @@ public class LocalizacaoLetra {
 
     public void setColuna(Integer coluna) {
         this.coluna = coluna;
+    }
+
+    @Override
+    public String toString() {
+        return letra + "[" + linha + ","+ coluna + "]";
     }
 
     
