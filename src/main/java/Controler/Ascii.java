@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class Ascii {
 
-    public final char caracterASCIIAleatorio() {
+    private final char caracterASCIIAleatorio() {
         
         Random random = new Random();
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -24,4 +24,9 @@ public class Ascii {
         }
         return alphabet.charAt(random.nextInt(alphabet.length()));
     }
+    
+    public String CaractereASCIIString(){
+        return Character.toString(caracterASCIIAleatorio());
+    }
+    
 }
