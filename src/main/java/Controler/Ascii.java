@@ -25,7 +25,7 @@ public class Ascii {
         return alphabet.charAt(random.nextInt(alphabet.length()));
     }
     
-    public String CaractereASCIIString(){
+    public String caractereASCIIString(){
         return Character.toString(caracterASCIIAleatorio());
     }
     

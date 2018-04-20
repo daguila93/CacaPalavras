@@ -5,7 +5,7 @@
  */
 package CacaPalavras;
 
-import Controler.Matriz;
+import Controler.LeitorDePalavras;
 
 /**
  *
@@ -17,8 +17,8 @@ public class CacaPalavras {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Matriz matriz = new Matriz();
-        matriz.criarMatriz();
+        LeitorDePalavras leitorDePalavras = new LeitorDePalavras();
+        leitorDePalavras.mostrarMatriz();
     }
 }
     
