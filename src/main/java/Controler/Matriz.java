@@ -13,7 +13,7 @@ import Model.LocalizacaoLetra;
  */
 public class Matriz {
     
-    LocalizacaoLetra[][] matriz = new LocalizacaoLetra[6][6];
+    LocalizacaoLetra[][] matriz = new LocalizacaoLetra[50][50];
     private String letra;
     private Integer linha;
     private Integer coluna;
@@ -23,14 +23,14 @@ public class Matriz {
     }
     
     public LocalizacaoLetra[][] criarMatriz() {
-
+        Ascii objetoCaractere = new Ascii();
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
-                Ascii objetoCaractere = new Ascii();
+                
                 LocalizacaoLetra localizacaoLetra = new LocalizacaoLetra();
                 localizacaoLetra.setLinha(i);
                 localizacaoLetra.setColuna(j);
-                localizacaoLetra.setLetra(objetoCaractere.caractereASCIIString());
+                localizacaoLetra.setLetra(objetoCaractere.caracterASCIIAleatorio().toLowerCase());
                 
                 matriz[i][j] = localizacaoLetra;
             }

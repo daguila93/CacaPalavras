@@ -5,22 +5,31 @@
  */
 package Service;
 
-import java.io.File;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
 
 /**
  *
  * @author edil
  */
-public class JsonService {
-
-    private void lerArquivoJson() {
-
+public class JsonService {            
+        List<String> paises = null;
+    
+    public List<String> lerArquivoJson(String arquivo) {
         try {
-            File caminhoDoArquivo = new File("." + File.separator + "paises.json");
-        } catch (Exception e) {
-            
+        ObjectMapper objectMapper = new ObjectMapper();
+        paises = objectMapper.readValue(new FileReader(arquivo), new TypeReference<List<String>>() {});
+        } catch (IOException e) {
+            System.out.println("Não foi possivel encontrar o arquivo. Tente: paises.json ");
         }
-
+        return paises;
+    }
+    
+    public void printarJson(){
+        System.out.println(paises);
     }
 
 }

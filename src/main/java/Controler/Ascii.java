@@ -5,7 +5,7 @@
  */
 package Controler;
 
-import java.util.Random;
+import static org.apache.commons.lang.RandomStringUtils.randomAlphabetic;
 
 /**
  *
@@ -13,20 +13,7 @@ import java.util.Random;
  */
 public class Ascii {
 
-    private final char caracterASCIIAleatorio() {
-        
-        Random random = new Random();
-        String alphabet = "abcdefghijklmnopqrstuvwxyz";
-        
-        char[] vetor = new char[26];
-        for (int i = 1; i < alphabet.length(); i++) {
-            vetor[i] = (char) i;
-        }
-        return alphabet.charAt(random.nextInt(alphabet.length()));
-    }
-    
-    public String caractereASCIIString(){
-        return Character.toString(caracterASCIIAleatorio());
-    }
-    
+    public String caracterASCIIAleatorio() {
+       return randomAlphabetic(1);
+    }    
 }
