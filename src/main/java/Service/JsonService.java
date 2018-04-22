@@ -22,6 +22,7 @@ public class JsonService {
         try {
         ObjectMapper objectMapper = new ObjectMapper();
         paises = objectMapper.readValue(new FileReader(arquivo), new TypeReference<List<String>>() {});
+            System.out.println("Json carregado com Sucesso!");
         } catch (IOException e) {
             System.out.println("Não foi possivel encontrar o arquivo. Tente: paises.json ");
         }

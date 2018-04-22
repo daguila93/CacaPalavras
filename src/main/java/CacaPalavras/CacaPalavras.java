@@ -29,7 +29,7 @@ public class CacaPalavras {
         jsonService.lerArquivoJson(arquivo);
         System.out.println("\n");
         
-        jsonService.printarJson();        
+        //jsonService.printarJson();        
         leitorDePalavras.mostrarMatriz();
     }
 }
