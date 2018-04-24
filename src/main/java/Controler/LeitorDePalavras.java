@@ -4,24 +4,30 @@
  * and open the template in the editor.
  */
 package Controler;
-
 /**
  *
  * @author edil
  */
 public class LeitorDePalavras {
 
-    Matriz matriz;    
-    String palavra = "edil";
-    String[] vetor = {"java", "sortpgm"};
+    Matriz matriz;
+    String palavraASerLocalizada = "ad";
+    String result = null;
+    String[] array = null;
     
     public LeitorDePalavras() {
         matriz = new Matriz();
     }
-    
-    public String encontrarEsquerdaParaDireita(){
-        
-        return null;
+
+    public String encontrarEsquerdaParaDireita() {
+        for (int i = 0; i < matriz.tamanho; i++) {
+            for (int j = 0; j < matriz.tamanho; j++) {
+                if (matriz.getLinha() == i && matriz.getColuna() == j) {
+                    array[j] = matriz.getLetra();
+                }
+            }
+        }
+        return result = converteArrayDeStringEmUmaUnicaString(array);
     }
     
     public String encontrarDireitaParaEsquerda(){
@@ -52,17 +58,21 @@ public class LeitorDePalavras {
         return null;
     }
 
-//    public String converteArrayDeStringEmUmaUnicaString(){
-//        String result = "";
-//        for (int i = 0; i < words.length; i++) {
-//            result += words[i];
-//        }
-//        return result;
-//    }
-        
+    private String converteArrayDeStringEmUmaUnicaString(String[] array){
+        for (int i = 0; i < array.length; i++) {
+            result += array;
+        }
+        return result;
+    }
+     
+    public void procuraAPalavraDoJsonNasPosicoesDaMatriz(){
+        if (result.contains(palavraASerLocalizada)) {
+            System.out.println(palavraASerLocalizada + " foi encontrada na Linha: "
+                    + matriz.getLinha() + " e Coluna: " + matriz.getColuna());
+        }
+    }
 
     public void mostrarMatriz() {
         matriz.mostrarMatriz();
     }
-
 }

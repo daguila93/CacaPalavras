@@ -18,7 +18,7 @@ public class CacaPalavras {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {        
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         JsonService jsonService = new JsonService();
         LeitorDePalavras leitorDePalavras = new LeitorDePalavras();
@@ -27,10 +27,10 @@ public class CacaPalavras {
         String arquivo = sc.next();
         
         jsonService.lerArquivoJson(arquivo);
-        System.out.println("\n");
+        System.out.println();
         
-        //jsonService.printarJson();        
+        //jsonService.printarJson();
         leitorDePalavras.mostrarMatriz();
+        leitorDePalavras.procuraAPalavraDoJsonNasPosicoesDaMatriz();
     }
 }
-    

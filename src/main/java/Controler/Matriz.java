@@ -13,7 +13,8 @@ import Model.LocalizacaoLetra;
  */
 public class Matriz {
     
-    LocalizacaoLetra[][] matriz = new LocalizacaoLetra[50][50];
+    Integer tamanho= 50;
+    LocalizacaoLetra[][] matriz = new LocalizacaoLetra[tamanho][tamanho];
     private String letra;
     private Integer linha;
     private Integer coluna;
@@ -30,7 +31,7 @@ public class Matriz {
                 LocalizacaoLetra localizacaoLetra = new LocalizacaoLetra();
                 localizacaoLetra.setLinha(i);
                 localizacaoLetra.setColuna(j);
-                localizacaoLetra.setLetra(objetoCaractere.caracterASCIIAleatorio().toLowerCase());
+                localizacaoLetra.setLetra(objetoCaractere.caracterASCIIAleatorio());
                 
                 matriz[i][j] = localizacaoLetra;
             }

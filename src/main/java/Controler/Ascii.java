@@ -14,6 +14,6 @@ import static org.apache.commons.lang.RandomStringUtils.randomAlphabetic;
 public class Ascii {
 
     public String caracterASCIIAleatorio() {
-       return randomAlphabetic(1);
+       return randomAlphabetic(1).toLowerCase();
     }    
 }
