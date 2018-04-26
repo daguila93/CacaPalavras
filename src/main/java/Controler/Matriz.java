@@ -15,8 +15,8 @@ public class Matriz {
     
     private Integer tamanho = 50;
     LocalizacaoLetra[][] matrizLocalizacaoLetra;
-    private String[] todoElementosDeUmaDalinhaDaMatriz;
-    private String[] todoElementosDeUmaColunaDaMatriz;
+    private String[] todosElementosDeUmaDalinhaDaMatriz;
+    private String[] todosElementosDeUmaColunaDaMatriz;
     
     public Matriz() {
      matrizLocalizacaoLetra = preencherMatriz(new LocalizacaoLetra[tamanho][tamanho]);
@@ -47,18 +47,20 @@ public class Matriz {
         }
     }
     
-    public void preencheOArrayDeLinhasDaMatriz(){
+    public String[] preencheOArrayDeLinhasDaMatriz(){
         for (int i = 0; i < getTamanho(); i++) {
             for (int j = 0; j < getTamanho(); j++) {
-                todoElementosDeUmaDalinhaDaMatriz[i] = matrizLocalizacaoLetra[i][j].getLetra();
+                todosElementosDeUmaDalinhaDaMatriz[i] = matrizLocalizacaoLetra[i][j].getLetra();
             }
         }
+        return todosElementosDeUmaDalinhaDaMatriz;
     }
     
-    // getLinha(indice da linha)
-    // getColuna(indice da coluna)
-    // getDiagonal(boolean diagonalReversa?)
+    // getLinha(indice da linha)               Feito
+    // getColuna(indice da coluna)             Fazer
+    // getDiagonal(boolean diagonalReversa?)   Fazer
 
+    
     public Integer getTamanho() {
         return tamanho;
     }

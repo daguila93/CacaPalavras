@@ -62,12 +62,7 @@ public class BuscadorDePalavras {
         return null;
     }
 
-    private String converteArrayDeStringEmUmaUnicaString(String[] array){
-        for (int i = 0; i < array.length; i++) {
-            result += array;
-        }
-        return result;
-    }
+    
      
     public void procuraAPalavraDoJsonNasPosicoesDaMatriz(){
         if (result.contains(palavraASerLocalizada)) {
