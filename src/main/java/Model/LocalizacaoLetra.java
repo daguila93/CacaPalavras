@@ -46,6 +46,4 @@ public class LocalizacaoLetra {
         return letra + "[" + linha + ","+ coluna + "]";
     }
 
-    
-    
 }

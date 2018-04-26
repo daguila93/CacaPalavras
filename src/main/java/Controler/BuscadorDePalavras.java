@@ -4,26 +4,30 @@
  * and open the template in the editor.
  */
 package Controler;
+
+import Model.LocalizacaoLetra;
+
 /**
  *
  * @author edil
  */
-public class LeitorDePalavras {
+public class BuscadorDePalavras {
 
     Matriz matriz;
     String palavraASerLocalizada = "ad";
     String result = null;
     String[] array = null;
     
-    public LeitorDePalavras() {
+    public BuscadorDePalavras() {
         matriz = new Matriz();
     }
 
     public String encontrarEsquerdaParaDireita() {
-        for (int i = 0; i < matriz.tamanho; i++) {
-            for (int j = 0; j < matriz.tamanho; j++) {
-                if (matriz.getLinha() == i && matriz.getColuna() == j) {
-                    array[j] = matriz.getLetra();
+        for (int i = 0; i < matriz.getTamanho(); i++) {
+            for (int j = 0; j < matriz.getTamanho(); j++) {
+                if (i == j) {
+                    LocalizacaoLetra elemento = matriz[i][j];
+                    array[j] = elemento.getLetra();
                 }
             }
         }

@@ -5,7 +5,7 @@
  */
 package CacaPalavras;
 
-import Controler.LeitorDePalavras;
+import Controler.BuscadorDePalavras;
 import Service.JsonService;
 import java.util.Scanner;
 
@@ -21,7 +21,7 @@ public class CacaPalavras {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         JsonService jsonService = new JsonService();
-        LeitorDePalavras leitorDePalavras = new LeitorDePalavras();
+        BuscadorDePalavras leitorDePalavras = new BuscadorDePalavras();
         
         System.out.println("Digite o nome do Arquivo: ");
         String arquivo = sc.next();

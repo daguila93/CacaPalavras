@@ -13,17 +13,16 @@ import Model.LocalizacaoLetra;
  */
 public class Matriz {
     
-    Integer tamanho= 50;
-    LocalizacaoLetra[][] matriz = new LocalizacaoLetra[tamanho][tamanho];
-    private String letra;
-    private Integer linha;
-    private Integer coluna;
+    private Integer tamanho = 50;
+    LocalizacaoLetra[][] matrizLocalizacaoLetra;
+    private String[] todoElementosDeUmaDalinhaDaMatriz;
+    private String[] todoElementosDeUmaColunaDaMatriz;
     
     public Matriz() {
-     matriz = criarMatriz();
+     matrizLocalizacaoLetra = preencherMatriz(new LocalizacaoLetra[tamanho][tamanho]);
     }
     
-    public LocalizacaoLetra[][] criarMatriz() {
+    private LocalizacaoLetra[][] preencherMatriz(LocalizacaoLetra[][] matriz) {
         Ascii objetoCaractere = new Ascii();
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
@@ -38,43 +37,29 @@ public class Matriz {
         }
         return matriz;
     }
-    
-    public void mostrarMatriz(){
-        for (int i = 0; i < matriz.length; i++) {
+
+    public void mostrarMatriz() {
+        for (int i = 0; i < matrizLocalizacaoLetra.length; i++) {
             System.out.println();
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j].getLetra() + " ");
-            }            
+            for (int j = 0; j < matrizLocalizacaoLetra[i].length; j++) {
+                System.out.print(matrizLocalizacaoLetra[i][j].getLetra() + " ");
+            }
         }
     }
-
-    public String getLetra() {
-        return letra;
-    }
-
-    public void setLetra(String letra) {
-        this.letra = letra;
-    }
-
-    public Integer getLinha() {
-        return linha;
-    }
-
-    public void setLinha(Integer linha) {
-        this.linha = linha;
-    }
-
-    public Integer getColuna() {
-        return coluna;
-    }
-
-    public void setColuna(Integer coluna) {
-        this.coluna = coluna;
-    }
-
-    @Override
-    public String toString() {
-        return "Matriz{" + "matriz=" + matriz + ", letra=" + letra + ", linha=" + linha + ", coluna=" + coluna + '}';
+    
+    public void preencheOArrayDeLinhasDaMatriz(){
+        for (int i = 0; i < getTamanho(); i++) {
+            for (int j = 0; j < getTamanho(); j++) {
+                todoElementosDeUmaDalinhaDaMatriz[i] = matrizLocalizacaoLetra[i][j].getLetra();
+            }
+        }
     }
     
+    // getLinha(indice da linha)
+    // getColuna(indice da coluna)
+    // getDiagonal(boolean diagonalReversa?)
+
+    public Integer getTamanho() {
+        return tamanho;
+    }
 }
