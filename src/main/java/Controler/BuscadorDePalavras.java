@@ -5,8 +5,6 @@
  */
 package Controler;
 
-import Model.LocalizacaoLetra;
-
 /**
  *
  * @author edil
@@ -24,12 +22,7 @@ public class BuscadorDePalavras {
 
     public String encontrarEsquerdaParaDireita() {
         for (int i = 0; i < matriz.getTamanho(); i++) {
-            for (int j = 0; j < matriz.getTamanho(); j++) {
-                if (i == j) {
-                    LocalizacaoLetra elemento = matriz[i][j];
-                    array[j] = elemento.getLetra();
-                }
-            }
+            matriz.getLinha();
         }
         return result = converteArrayDeStringEmUmaUnicaString(array);
     }
@@ -61,15 +54,13 @@ public class BuscadorDePalavras {
     public String encontrarDireitaSuperiorParaEsquerdaInferior() {
         return null;
     }
-
-    
      
-    public void procuraAPalavraDoJsonNasPosicoesDaMatriz(){
-        if (result.contains(palavraASerLocalizada)) {
-            System.out.println(palavraASerLocalizada + " foi encontrada na Linha: "
-                    + matriz.getLinha() + " e Coluna: " + matriz.getColuna());
-        }
-    }
+//    public void procuraAPalavraDoJsonNasPosicoesDaMatriz(){
+//        if (result.contains(palavraASerLocalizada)) {
+//            System.out.println(palavraASerLocalizada + " foi encontrada na Linha: "
+//                    + matriz.getLinha() + " e Coluna: " + matriz.getColuna());
+//        }
+//    }
 
     public void mostrarMatriz() {
         matriz.mostrarMatriz();

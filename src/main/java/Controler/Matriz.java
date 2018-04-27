@@ -15,8 +15,6 @@ public class Matriz {
     
     private Integer tamanho = 50;
     LocalizacaoLetra[][] matrizLocalizacaoLetra;
-    private String[] todosElementosDeUmaDalinhaDaMatriz;
-    private String[] todosElementosDeUmaColunaDaMatriz;
     
     public Matriz() {
      matrizLocalizacaoLetra = preencherMatriz(new LocalizacaoLetra[tamanho][tamanho]);
@@ -47,19 +45,49 @@ public class Matriz {
         }
     }
     
-    public String[] preencheOArrayDeLinhasDaMatriz(){
+    public LocalizacaoLetra[] getLinha(Integer posicaoDaLinha){
+        LocalizacaoLetra[] linhas = new LocalizacaoLetra[getTamanho()];
+        for (int j = 0; j < getTamanho(); j++) {
+            linhas[j] = matrizLocalizacaoLetra[posicaoDaLinha][j];
+        }        
+        return linhas;
+        //retorna a linha da matriz com os elementos dentro.
+    }
+    
+    public LocalizacaoLetra[] getColuna(Integer posicaoDaColuna){
+        LocalizacaoLetra[] colunas = new LocalizacaoLetra[getTamanho()];
+        for (int i = 0; i < getTamanho(); i++) {
+            colunas[i] = matrizLocalizacaoLetra[i][posicaoDaColuna];
+        }        
+        return colunas;
+        //retorna a coluna da matriz com os elementos dentro.
+    }
+    
+    public LocalizacaoLetra[] getDiagonalPrincipal(){
+        LocalizacaoLetra[] diagonalPrincipal = new LocalizacaoLetra[getTamanho()];
         for (int i = 0; i < getTamanho(); i++) {
             for (int j = 0; j < getTamanho(); j++) {
-                todosElementosDeUmaDalinhaDaMatriz[i] = matrizLocalizacaoLetra[i][j].getLetra();
+                if (i == j) {
+                    diagonalPrincipal[j] = matrizLocalizacaoLetra[i][j];
+                }            
             }
         }
-        return todosElementosDeUmaDalinhaDaMatriz;
+        return diagonalPrincipal;
+    }
+    
+    public LocalizacaoLetra[] getDiagonalSecundaria(){
+        LocalizacaoLetra[] diagonalSecundaria = new LocalizacaoLetra[getTamanho()];
+        for (int i = 0; i < getTamanho(); i++) {
+            for (int j = 0; j < getTamanho(); j++) {
+               //Implementar lógica da Diagonal Secundária
+            }
+        }
+        return diagonalSecundaria;
     }
     
     // getLinha(indice da linha)               Feito
-    // getColuna(indice da coluna)             Fazer
+    // getColuna(indice da coluna)             Feito
     // getDiagonal(boolean diagonalReversa?)   Fazer
-
     
     public Integer getTamanho() {
         return tamanho;

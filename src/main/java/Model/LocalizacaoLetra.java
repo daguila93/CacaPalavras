@@ -43,7 +43,7 @@ public class LocalizacaoLetra {
 
     @Override
     public String toString() {
-        return letra + "[" + linha + ","+ coluna + "]";
+        return this.getLetra();
     }
 
 }

@@ -31,6 +31,5 @@ public class CacaPalavras {
         
         //jsonService.printarJson();
         leitorDePalavras.mostrarMatriz();
-        leitorDePalavras.procuraAPalavraDoJsonNasPosicoesDaMatriz();
     }
 }
