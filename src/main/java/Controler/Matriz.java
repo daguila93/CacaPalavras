@@ -6,6 +6,8 @@
 package Controler;
 
 import Model.LocalizacaoLetra;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -45,12 +47,12 @@ public class Matriz {
         }
     }
     
-    public LocalizacaoLetra[] getLinha(Integer posicaoDaLinha){
-        LocalizacaoLetra[] linhas = new LocalizacaoLetra[getTamanho()];
+    public List<LocalizacaoLetra> getLinha(Integer posicaoDaLinha){
+        List<LocalizacaoLetra> linha = new ArrayList<>();        
         for (int j = 0; j < getTamanho(); j++) {
-            linhas[j] = matrizLocalizacaoLetra[posicaoDaLinha][j];
+            linha.add(matrizLocalizacaoLetra[posicaoDaLinha][j]);
         }        
-        return linhas;
+        return linha;
         //retorna a linha da matriz com os elementos dentro.
     }
     

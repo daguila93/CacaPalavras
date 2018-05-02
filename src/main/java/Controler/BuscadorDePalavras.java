@@ -5,6 +5,9 @@
  */
 package Controler;
 
+import Model.LocalizacaoLetra;
+import java.util.List;
+
 /**
  *
  * @author edil
@@ -12,57 +15,81 @@ package Controler;
 public class BuscadorDePalavras {
 
     Matriz matriz;
-    String palavraASerLocalizada = "ad";
+    String palavraASerLocalizada = "a";
     String result = null;
     String[] array = null;
-    
+
     public BuscadorDePalavras() {
         matriz = new Matriz();
+        executorDeMétodos();
     }
 
-    public String encontrarEsquerdaParaDireita() {
+    private void encontrarEsquerdaParaDireita() {
         for (int i = 0; i < matriz.getTamanho(); i++) {
-            matriz.getLinha();
+            List<LocalizacaoLetra> linha = matriz.getLinha(i);
+            result = converteArrayDeStringEmUmaUnicaString(linha);
+            int index = -1;
+            do { //indexof quando nao encontra retorna -1
+                index = result.indexOf(palavraASerLocalizada, index + 1);
+                if (index != -1) {
+                    LocalizacaoLetra localizacaoLetra = linha.get(index);
+                    System.out.println(String.format("%s = [%s][%s]", palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
+                }
+            } while (index != -1);
         }
-        return result = converteArrayDeStringEmUmaUnicaString(array);
     }
-    
-    public String encontrarDireitaParaEsquerda(){
+
+    public String encontrarDireitaParaEsquerda() {
+        for (int i = 0; i < matriz.getTamanho(); i++) {
+            matriz.getLinha(i);
+        }
         return null;
     }
-    
-    public String encontrarCimaParaBaixo(){
+
+    public String encontrarCimaParaBaixo() {
         return null;
     }
-    
-    public String encontrarBaixoParaCima(){
+
+    public String encontrarBaixoParaCima() {
         return null;
     }
-    
-    public String encontrarEsquerdaSuperiorParaDireitaInferior(){
+
+    public String encontrarEsquerdaSuperiorParaDireitaInferior() {
         return null;
     }
-    
-    public String encontrarDireitaInferiorParaEsquerdaSuperior(){
+
+    public String encontrarDireitaInferiorParaEsquerdaSuperior() {
         return null;
     }
-    
-    public String encontrarEsquerdaInferiorParaDireitaSuperior(){
+
+    public String encontrarEsquerdaInferiorParaDireitaSuperior() {
         return null;
     }
-  
+
     public String encontrarDireitaSuperiorParaEsquerdaInferior() {
         return null;
     }
-     
-//    public void procuraAPalavraDoJsonNasPosicoesDaMatriz(){
+
+    private void executorDeMétodos() {
+        encontrarEsquerdaParaDireita();
+    }
+
+    public void procuraAPalavraDoJsonNasPosicoesDaMatriz() {
 //        if (result.contains(palavraASerLocalizada)) {
 //            System.out.println(palavraASerLocalizada + " foi encontrada na Linha: "
-//                    + matriz.getLinha() + " e Coluna: " + matriz.getColuna());
+//                    + matriz.getLinha(?) + " e Coluna: " + matriz.getColuna(?));
 //        }
-//    }
+    }
 
     public void mostrarMatriz() {
         matriz.mostrarMatriz();
+    }
+
+    private String converteArrayDeStringEmUmaUnicaString(List<LocalizacaoLetra> letras) {
+        StringBuilder sb = new StringBuilder();
+        for (LocalizacaoLetra letra : letras) {
+            sb.append(letra.getLetra());
+        }
+        return sb.toString();
     }
 }

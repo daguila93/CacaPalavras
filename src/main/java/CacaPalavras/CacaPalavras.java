@@ -7,6 +7,7 @@ package CacaPalavras;
 
 import Controler.BuscadorDePalavras;
 import Service.JsonService;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -21,13 +22,14 @@ public class CacaPalavras {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         JsonService jsonService = new JsonService();
-        BuscadorDePalavras leitorDePalavras = new BuscadorDePalavras();
         
         System.out.println("Digite o nome do Arquivo: ");
         String arquivo = sc.next();
         
-        jsonService.lerArquivoJson(arquivo);
+        List<String> listaPaises = jsonService.lerArquivoJson(arquivo);
         System.out.println();
+        
+        BuscadorDePalavras leitorDePalavras = new BuscadorDePalavras();
         
         //jsonService.printarJson();
         leitorDePalavras.mostrarMatriz();
