@@ -28,9 +28,10 @@ public class BuscadorDePalavras {
         for (int i = 0; i < matriz.getTamanho(); i++) {
             List<LocalizacaoLetra> linha = matriz.getLinha(i);
             result = converteArrayDeStringEmUmaUnicaString(linha);
+            
             int index = -1;
             do { //indexof quando nao encontra retorna -1
-                index = result.indexOf(palavraASerLocalizada, index + 1);
+                index = result.indexOf(palavraASerLocalizada, index + 1); // +1 pois quando localiza a letra, ele precisa testar na mesma string se tem mais resultados
                 if (index != -1) {
                     LocalizacaoLetra localizacaoLetra = linha.get(index);
                     System.out.println(String.format("%s = [%s][%s]", palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
