@@ -56,21 +56,21 @@ public class Matriz {
         //retorna a linha da matriz com os elementos dentro.
     }
     
-    public LocalizacaoLetra[] getColuna(Integer posicaoDaColuna){
-        LocalizacaoLetra[] colunas = new LocalizacaoLetra[getTamanho()];
+    public List<LocalizacaoLetra> getColuna(Integer posicaoDaColuna){
+        List<LocalizacaoLetra> coluna = new ArrayList<>();
         for (int i = 0; i < getTamanho(); i++) {
-            colunas[i] = matrizLocalizacaoLetra[i][posicaoDaColuna];
+            coluna.add(matrizLocalizacaoLetra[i][posicaoDaColuna]);
         }        
-        return colunas;
+        return coluna;
         //retorna a coluna da matriz com os elementos dentro.
     }
     
-    public LocalizacaoLetra[] getDiagonalPrincipal(){
-        LocalizacaoLetra[] diagonalPrincipal = new LocalizacaoLetra[getTamanho()];
+    public List<LocalizacaoLetra> getDiagonalPrincipal(){
+        List<LocalizacaoLetra> diagonalPrincipal = new ArrayList<>();
         for (int i = 0; i < getTamanho(); i++) {
             for (int j = 0; j < getTamanho(); j++) {
                 if (i == j) {
-                    diagonalPrincipal[j] = matrizLocalizacaoLetra[i][j];
+                    diagonalPrincipal.add(matrizLocalizacaoLetra[i][j]);
                 }            
             }
         }

@@ -15,7 +15,7 @@ import java.util.List;
 public class BuscadorDePalavras {
 
     Matriz matriz;
-    String palavraASerLocalizada = "a";
+    String palavraASerLocalizada = "ma";
     String result = null;
     String[] array = null;
 
@@ -40,11 +40,28 @@ public class BuscadorDePalavras {
         }
     }
 
-    public String encontrarDireitaParaEsquerda() {
-        for (int i = 0; i < matriz.getTamanho(); i++) {
-            matriz.getLinha(i);
+    public void encontrarDireitaParaEsquerda() {
+        char[] tempCharArray = new char[result.length()];
+        char[] charArray = new char[result.length()];
+        
+        for (int i = 0; i < result.length(); i++) {
+            tempCharArray[i] = result.charAt(i);
         }
-        return null;
+        for (int i = result.length(); i >= 0; i--) {
+            charArray[i] = tempCharArray[result.length() - 1 - i];
+        }
+        String palindromoReverso = new String(charArray);
+        
+        for (int i = 0; i < matriz.getTamanho(); i++) {
+            int index = -1;
+            do { //indexof quando nao encontra retorna -1
+                index = palindromoReverso.indexOf(palavraASerLocalizada, index + 1); // +1 pois quando localiza a letra, ele precisa testar na mesma string se tem mais resultados
+                if (index != -1) {
+                    LocalizacaoLetra localizacaoLetra = linha.get(index);
+                    System.out.println(String.format("%s = [%s][%s]", palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
+                }
+            }while (index != -1);
+        }
     }
 
     public String encontrarCimaParaBaixo() {
