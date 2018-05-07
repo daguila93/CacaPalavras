@@ -79,12 +79,30 @@ public class BuscadorDePalavras {
         encontrarCimaParaBaixo(palavraReversa);
     }
 
-    public String encontrarEsquerdaSuperiorParaDireitaInferior() {
-        return null;
+    public void encontrarDiagonalPrincipal(String palavraASerLocalizada) {
+        List<LocalizacaoLetra> diagonalPricipal = matriz.getDiagonalPrincipal();
+        result = converteArrayDeStringEmUmaUnicaString(diagonalPricipal);
+        
+        int index = -1;
+        do {            
+            index = result.indexOf(palavraASerLocalizada, index + 1);
+            if (index != -1) {
+                LocalizacaoLetra localizacaoLetra = diagonalPricipal.get(index);
+                System.out.println(String.format("%s = [%s][%s]", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
+            }
+        } while (index != -1);
     }
 
-    public String encontrarDireitaInferiorParaEsquerdaSuperior() {
-        return null;
+    public void encontrarDiagonalPrincipalReversa() {
+        StringBuilder stringBuilderReverso;
+        String palavraReversa;
+        
+        StringBuilder sb = new StringBuilder(palavraASerLocalizada);
+        stringBuilderReverso = sb.reverse();
+        palavraReversa = stringBuilderReverso.toString();
+        
+        encontrarDiagonalPrincipal(palavraReversa);
+        
     }
 
     public String encontrarEsquerdaInferiorParaDireitaSuperior() {
