@@ -21,10 +21,10 @@ public class BuscadorDePalavras {
 
     public BuscadorDePalavras() {
         matriz = new Matriz();
-        executorDeMétodos();
+        buscaPalavra();
     }
 
-    private void encontrarEsquerdaParaDireita() {
+    private void encontrarEsquerdaParaDireita(String palavraASerLocalizada) {
         for (int i = 0; i < matriz.getTamanho(); i++) {
             List<LocalizacaoLetra> linha = matriz.getLinha(i);
             result = converteArrayDeStringEmUmaUnicaString(linha);
@@ -34,42 +34,49 @@ public class BuscadorDePalavras {
                 index = result.indexOf(palavraASerLocalizada, index + 1); // +1 pois quando localiza a letra, ele precisa testar na mesma string se tem mais resultados
                 if (index != -1) {
                     LocalizacaoLetra localizacaoLetra = linha.get(index);
-                    System.out.println(String.format("%s = [%s][%s]", palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
+                    System.out.println(String.format("%s = [%s][%s]", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
                 }
             } while (index != -1);
         }
     }
 
     public void encontrarDireitaParaEsquerda() {
-        char[] tempCharArray = new char[result.length()];
-        char[] charArray = new char[result.length()];
+        StringBuilder stringBuilderReverso;
+        String palavraReversa;
         
-        for (int i = 0; i < result.length(); i++) {
-            tempCharArray[i] = result.charAt(i);
-        }
-        for (int i = result.length(); i >= 0; i--) {
-            charArray[i] = tempCharArray[result.length() - 1 - i];
-        }
-        String palindromoReverso = new String(charArray);
+        StringBuilder sb = new StringBuilder(palavraASerLocalizada);
+        stringBuilderReverso = sb.reverse();
+        palavraReversa = stringBuilderReverso.toString();
         
-        for (int i = 0; i < matriz.getTamanho(); i++) {
+        encontrarEsquerdaParaDireita(palavraReversa);
+        
+    }
+
+    public void encontrarCimaParaBaixo(String palavraASerLocalizada) {
+        for (int j = 0; j < matriz.getTamanho(); j++) {
+            List<LocalizacaoLetra> coluna = matriz.getColuna(j);
+            result = converteArrayDeStringEmUmaUnicaString(coluna);
+            
             int index = -1;
-            do { //indexof quando nao encontra retorna -1
-                index = palindromoReverso.indexOf(palavraASerLocalizada, index + 1); // +1 pois quando localiza a letra, ele precisa testar na mesma string se tem mais resultados
+            do {                
+                index = result.indexOf(palavraASerLocalizada, index + 1);
                 if (index != -1) {
-                    LocalizacaoLetra localizacaoLetra = linha.get(index);
-                    System.out.println(String.format("%s = [%s][%s]", palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
+                    LocalizacaoLetra localizacaoLetra = coluna.get(index);
+                    System.out.println(String.format("%s = [%s][%s]", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
                 }
-            }while (index != -1);
+            } while (index != -1);
         }
     }
 
-    public String encontrarCimaParaBaixo() {
-        return null;
-    }
-
-    public String encontrarBaixoParaCima() {
-        return null;
+    public void encontrarBaixoParaCima() {
+        StringBuilder stringBuilderReverso;
+        String palavraReversa;
+        
+        StringBuilder sb = new StringBuilder(palavraASerLocalizada);
+        stringBuilderReverso = sb.reverse();
+        palavraReversa = stringBuilderReverso.toString();
+        
+        encontrarCimaParaBaixo(palavraReversa);
     }
 
     public String encontrarEsquerdaSuperiorParaDireitaInferior() {
@@ -88,8 +95,11 @@ public class BuscadorDePalavras {
         return null;
     }
 
-    private void executorDeMétodos() {
-        encontrarEsquerdaParaDireita();
+    private void buscaPalavra() {
+        encontrarEsquerdaParaDireita(palavraASerLocalizada);
+        encontrarDireitaParaEsquerda();
+        encontrarCimaParaBaixo(palavraASerLocalizada);
+        encontrarBaixoParaCima();
     }
 
     public void procuraAPalavraDoJsonNasPosicoesDaMatriz() {
