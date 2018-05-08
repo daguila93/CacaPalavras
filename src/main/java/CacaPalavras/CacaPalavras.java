@@ -6,8 +6,7 @@
 package CacaPalavras;
 
 import Controler.BuscadorDePalavras;
-import Service.JsonService;
-import java.util.List;
+import java.io.FileReader;
 import java.util.Scanner;
 
 /**
@@ -19,19 +18,28 @@ public class CacaPalavras {
     /**
      * @param args the command line arguments
      */
+    public static String caminho;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        JsonService jsonService = new JsonService();
-        
+        BuscadorDePalavras buscadorDePalavras;
+
         System.out.println("Digite o nome do Arquivo: ");
         String arquivo = sc.next();
-        
-        List<String> listaPaises = jsonService.lerArquivoJson(arquivo);
+
+        try {
+            new FileReader(arquivo);
+            System.out.println("Arquivo JSON carregado com Sucesso!");
+            CacaPalavras.caminho = arquivo;
+
+            //List<String> listaPaises = jsonService.lerArquivoJson(arquivo);
+            buscadorDePalavras = new BuscadorDePalavras();
+        } catch (Exception e) {
+            System.out.println("Arquivo não encontrado. Tente: paises.json");
+        }
+
         System.out.println();
-        
-        BuscadorDePalavras leitorDePalavras = new BuscadorDePalavras();
-        
+
         //jsonService.printarJson();
-        leitorDePalavras.mostrarMatriz();
     }
 }

@@ -77,13 +77,14 @@ public class Matriz {
         return diagonalPrincipal;
     }
     
-    public LocalizacaoLetra[] getDiagonalSecundaria(){
-        LocalizacaoLetra[] diagonalSecundaria = new LocalizacaoLetra[getTamanho()];
-        for (int i = 0; i < getTamanho(); i++) {
-            for (int j = 0; j < getTamanho(); j++) {
-               //Implementar lógica da Diagonal Secundária
-            }
+    public List<LocalizacaoLetra> getDiagonalSecundaria(){
+        List<LocalizacaoLetra> diagonalSecundaria = new ArrayList<>();
+        int coluna = getTamanho();
+        for (int linha = 0; linha < getTamanho(); linha++) {
+            coluna--;
+            diagonalSecundaria.add(matrizLocalizacaoLetra[linha][coluna]);
         }
+
         return diagonalSecundaria;
     }
     

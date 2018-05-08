@@ -5,32 +5,45 @@
  */
 package Service;
 
+import CacaPalavras.CacaPalavras;
+import Controler.BuscadorDePalavras;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import sun.applet.Main;
 
 /**
  *
  * @author edil
  */
-public class JsonService {            
-        List<String> paises = null;
+public class JsonService {
     
-    public List<String> lerArquivoJson(String arquivo) {
+    CacaPalavras cacaPalavras = new CacaPalavras();
+    BuscadorDePalavras leitorDePalavras;
+    private List<String> paises;
+
+    public JsonService() {
+        lerArquivoJson();
+    }    
+
+    public List<String> lerArquivoJson() {
         try {
-        ObjectMapper objectMapper = new ObjectMapper();
-        paises = objectMapper.readValue(new FileReader(arquivo), new TypeReference<List<String>>() {});
-            System.out.println("Json carregado com Sucesso!");
+            ObjectMapper objectMapper = new ObjectMapper();
+            paises = objectMapper.readValue(new FileReader(cacaPalavras.caminho), new TypeReference<List<String>>() {
+            });
         } catch (IOException e) {
-            System.out.println("Não foi possivel encontrar o arquivo. Tente: paises.json ");
         }
         return paises;
     }
-    
-    public void printarJson(){
+
+    public void printarJson() {
         System.out.println(paises);
+    }
+    
+    public List<String> getPaises() {
+        return paises;
     }
 
 }
