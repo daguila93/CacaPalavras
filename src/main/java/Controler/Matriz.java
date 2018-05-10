@@ -79,10 +79,10 @@ public class Matriz {
     
     public List<LocalizacaoLetra> getDiagonalSecundaria(){
         List<LocalizacaoLetra> diagonalSecundaria = new ArrayList<>();
-        int coluna = getTamanho();
+        int coluna = getTamanho() - 1;
         for (int linha = 0; linha < getTamanho(); linha++) {
-            coluna--;
-            diagonalSecundaria.add(matrizLocalizacaoLetra[linha][coluna]);
+            diagonalSecundaria.add(matrizLocalizacaoLetra[linha][coluna]);            
+            --coluna;
         }
 
         return diagonalSecundaria;

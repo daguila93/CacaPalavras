@@ -7,6 +7,8 @@ package Controler;
 
 import Model.LocalizacaoLetra;
 import Service.JsonService;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,18 +22,21 @@ public class BuscadorDePalavras {
     String result = null;
     String[] array = null;
 
-
     public BuscadorDePalavras() {
         matriz = new Matriz();
         jsonService = new JsonService();
         mostrarMatriz();
+        System.out.println();
         palavraAtual();
     }
     
     private void palavraAtual(){
-        for (String palavra : jsonService.getPaises()) {
-            buscaPalavra(palavra);
-        }
+        List<String> palavra = new ArrayList<>();
+             palavra = jsonService.getPaises();
+        for (int i = 0; i < palavra.size(); i++) {
+            palavraASerLocalizada = palavra.get(i);
+            buscaPalavra(palavraASerLocalizada.toLowerCase());
+        }               
     }
 
     private void encontrarEsquerdaParaDireita(String palavraASerLocalizada) {
@@ -50,7 +55,7 @@ public class BuscadorDePalavras {
         }
     }
 
-    public void encontrarDireitaParaEsquerda() {
+    private void encontrarDireitaParaEsquerda() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
         
@@ -62,7 +67,7 @@ public class BuscadorDePalavras {
         
     }
 
-    public void encontrarCimaParaBaixo(String palavraASerLocalizada) {
+    private void encontrarCimaParaBaixo(String palavraASerLocalizada) {
         for (int j = 0; j < matriz.getTamanho(); j++) {
             List<LocalizacaoLetra> coluna = matriz.getColuna(j);
             result = converteArrayDeStringEmUmaUnicaString(coluna);
@@ -78,7 +83,7 @@ public class BuscadorDePalavras {
         }
     }
 
-    public void encontrarBaixoParaCima() {
+    private void encontrarBaixoParaCima() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
         
@@ -89,7 +94,7 @@ public class BuscadorDePalavras {
         encontrarCimaParaBaixo(palavraReversa);
     }
 
-    public void encontrarDiagonalPrincipal(String palavraASerLocalizada) {
+    private void encontrarDiagonalPrincipal(String palavraASerLocalizada) {
         List<LocalizacaoLetra> diagonalPricipal = matriz.getDiagonalPrincipal();
         result = converteArrayDeStringEmUmaUnicaString(diagonalPricipal);
         
@@ -103,7 +108,7 @@ public class BuscadorDePalavras {
         } while (index != -1);
     }
 
-    public void encontrarDiagonalPrincipalReversa() {
+    private void encontrarDiagonalPrincipalReversa() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
         
@@ -115,7 +120,7 @@ public class BuscadorDePalavras {
         
     }
 
-    public void encontrarDiagonalSecundaria(String palavraASerLocalizada) {
+    private void encontrarDiagonalSecundaria(String palavraASerLocalizada) {
         List<LocalizacaoLetra> diagonalSecundaria = matriz.getDiagonalSecundaria();
         result = converteArrayDeStringEmUmaUnicaString(diagonalSecundaria);
         
@@ -125,12 +130,11 @@ public class BuscadorDePalavras {
             if (index != -1) {
                 LocalizacaoLetra localizacaoLetra = diagonalSecundaria.get(index);
                 System.out.println(String.format("%s = [%s][%s]", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
-                
             }
         } while (true);
     }
 
-    public void encontrarDiagonalSecundariaReversa() {
+    private void encontrarDiagonalSecundariaReversa() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
         
@@ -141,7 +145,7 @@ public class BuscadorDePalavras {
         encontrarDiagonalSecundaria(palavraReversa);
     }
 
-    private void buscaPalavra(String palavraASerLocalizada) {
+    public void buscaPalavra(String palavraASerLocalizada) {
         encontrarEsquerdaParaDireita(palavraASerLocalizada);
         encontrarDireitaParaEsquerda();
         encontrarCimaParaBaixo(palavraASerLocalizada);

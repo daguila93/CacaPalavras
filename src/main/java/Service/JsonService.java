@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
-import sun.applet.Main;
 
 /**
  *
@@ -28,7 +27,7 @@ public class JsonService {
         lerArquivoJson();
     }    
 
-    public List<String> lerArquivoJson() {
+    private List<String> lerArquivoJson() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             paises = objectMapper.readValue(new FileReader(cacaPalavras.caminho), new TypeReference<List<String>>() {

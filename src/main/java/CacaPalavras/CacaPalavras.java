@@ -6,6 +6,7 @@
 package CacaPalavras;
 
 import Controler.BuscadorDePalavras;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 
@@ -34,12 +35,10 @@ public class CacaPalavras {
 
             //List<String> listaPaises = jsonService.lerArquivoJson(arquivo);
             buscadorDePalavras = new BuscadorDePalavras();
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado. Tente: paises.json");
         }
 
-        System.out.println();
-
-        //jsonService.printarJson();
+        System.out.println();        
     }
 }
