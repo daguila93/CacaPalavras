@@ -32,8 +32,6 @@ public class CacaPalavras {
             new FileReader(arquivo);
             System.out.println("Arquivo JSON carregado com Sucesso!");
             CacaPalavras.caminho = arquivo;
-
-            //List<String> listaPaises = jsonService.lerArquivoJson(arquivo);
             buscadorDePalavras = new BuscadorDePalavras();
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado. Tente: paises.json");

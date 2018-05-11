@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Matriz {
     
-    private Integer tamanho = 50;
+    private Integer tamanho = 500;
     LocalizacaoLetra[][] matrizLocalizacaoLetra;
     
     public Matriz() {
@@ -82,7 +82,10 @@ public class Matriz {
         int coluna = getTamanho() - 1;
         for (int linha = 0; linha < getTamanho(); linha++) {
             diagonalSecundaria.add(matrizLocalizacaoLetra[linha][coluna]);            
-            --coluna;
+            if (coluna == 0) {
+                break;
+            }
+            coluna--;
         }
 
         return diagonalSecundaria;

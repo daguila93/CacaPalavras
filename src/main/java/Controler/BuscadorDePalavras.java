@@ -7,8 +7,6 @@ package Controler;
 
 import Model.LocalizacaoLetra;
 import Service.JsonService;
-import java.util.AbstractList;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,10 +29,8 @@ public class BuscadorDePalavras {
     }
     
     private void palavraAtual(){
-        List<String> palavra = new ArrayList<>();
-             palavra = jsonService.getPaises();
-        for (int i = 0; i < palavra.size(); i++) {
-            palavraASerLocalizada = palavra.get(i);
+        for (int i = 0; i < jsonService.getPaises().size(); i++) {
+            palavraASerLocalizada = jsonService.getPaises().get(i);
             buscaPalavra(palavraASerLocalizada.toLowerCase());
         }               
     }
@@ -126,12 +122,12 @@ public class BuscadorDePalavras {
         
         int index = -1;
         do {            
-            index = result.indexOf(palavraASerLocalizada, index +1);
+            index = result.indexOf(palavraASerLocalizada, index++);
             if (index != -1) {
                 LocalizacaoLetra localizacaoLetra = diagonalSecundaria.get(index);
                 System.out.println(String.format("%s = [%s][%s]", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
             }
-        } while (true);
+        } while (index != -1);
     }
 
     private void encontrarDiagonalSecundariaReversa() {
