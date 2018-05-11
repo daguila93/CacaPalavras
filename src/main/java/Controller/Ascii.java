@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controler;
+package Controller;
 
 import static org.apache.commons.lang.RandomStringUtils.randomAlphabetic;
 
@@ -14,6 +14,6 @@ import static org.apache.commons.lang.RandomStringUtils.randomAlphabetic;
 public class Ascii {
 
     public String caracterASCIIAleatorio() {
-       return randomAlphabetic(1).toLowerCase();
-    }    
+        return randomAlphabetic(1).toLowerCase();
+    }
 }

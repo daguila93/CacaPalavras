@@ -5,18 +5,16 @@
  */
 package Model;
 
-
 /**
  *
  * @author edil
  */
 public class LocalizacaoLetra {
-    
+
     private String letra;
     private Integer linha;
     private Integer coluna;
 
-    
     public String getLetra() {
         return letra;
     }
@@ -45,5 +43,5 @@ public class LocalizacaoLetra {
     public String toString() {
         return this.getLetra();
     }
-
+    
 }
