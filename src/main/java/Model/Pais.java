@@ -10,7 +10,6 @@ package Model;
  * @author edil
  */
 public class Pais {
-
     String nome;
 
     public void setNome(String nome) {

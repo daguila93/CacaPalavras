@@ -6,7 +6,7 @@
 package Service;
 
 import CacaPalavras.CacaPalavras;
-import Controller.BuscadorDePalavras;
+import Controler.BuscadorDePalavras;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileReader;
@@ -18,20 +18,19 @@ import java.util.List;
  * @author edil
  */
 public class JsonService {
-
+    
     CacaPalavras cacaPalavras = new CacaPalavras();
     BuscadorDePalavras leitorDePalavras;
     private List<String> paises;
 
     public JsonService() {
         lerArquivoJson();
-    }
+    }    
 
     private List<String> lerArquivoJson() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            paises = objectMapper.readValue(new FileReader(cacaPalavras.caminho),
-                    new TypeReference<List<String>>() {
+            paises = objectMapper.readValue(new FileReader(cacaPalavras.caminho), new TypeReference<List<String>>() {
             });
         } catch (IOException e) {
         }
@@ -41,7 +40,7 @@ public class JsonService {
     public void printarJson() {
         System.out.println(paises);
     }
-
+    
     public List<String> getPaises() {
         return paises;
     }
