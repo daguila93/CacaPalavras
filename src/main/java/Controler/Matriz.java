@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Matriz {
     
-    private Integer tamanho = 500;
+    private Integer tamanho = CacaPalavras.CacaPalavras.tamanhoMatriz;
     LocalizacaoLetra[][] matrizLocalizacaoLetra;
     
     public Matriz() {
@@ -39,10 +39,11 @@ public class Matriz {
     }
 
     public void mostrarMatriz() {
-        for (int i = 0; i < matrizLocalizacaoLetra.length; i++) {
+        for (int i = 0; i < matrizLocalizacaoLetra.length; i++){
             System.out.println();
             for (int j = 0; j < matrizLocalizacaoLetra[i].length; j++) {
-                System.out.print(matrizLocalizacaoLetra[i][j].getLetra() + " ");
+                System.out.printf(String.format("%s ", matrizLocalizacaoLetra[i][j].getLetra()));
+                //System.out.printf(String.format("%s[%s %s] ", matrizLocalizacaoLetra[i][j].getLetra(), matrizLocalizacaoLetra[i][j].getLinha(), matrizLocalizacaoLetra[i][j].getColuna()));
             }
         }
     }

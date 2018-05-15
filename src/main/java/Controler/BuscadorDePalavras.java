@@ -24,7 +24,7 @@ public class BuscadorDePalavras {
         matriz = new Matriz();
         jsonService = new JsonService();
         mostrarMatriz();
-        System.out.println();
+        System.out.println("\n");
         palavraAtual();
     }
     
