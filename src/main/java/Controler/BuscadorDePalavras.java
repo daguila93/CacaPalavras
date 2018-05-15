@@ -13,7 +13,8 @@ import java.util.List;
  *
  * @author edil
  */
-public class BuscadorDePalavras {
+public final class BuscadorDePalavras {
+
     JsonService jsonService;
     Matriz matriz;
     String palavraASerLocalizada;
@@ -27,25 +28,25 @@ public class BuscadorDePalavras {
         System.out.println("\n");
         palavraAtual();
     }
-    
-    private void palavraAtual(){
+
+    private void palavraAtual() {
         for (int i = 0; i < jsonService.getPaises().size(); i++) {
             palavraASerLocalizada = jsonService.getPaises().get(i);
             buscaPalavra(palavraASerLocalizada.toLowerCase());
-        }               
+        }
     }
 
     private void encontrarEsquerdaParaDireita(String palavraASerLocalizada) {
         for (int i = 0; i < matriz.getTamanho(); i++) {
             List<LocalizacaoLetra> linha = matriz.getLinha(i);
             result = converteArrayDeStringEmUmaUnicaString(linha);
-            
+
             int index = -1;
             do { //indexof quando nao encontra retorna -1
                 index = result.indexOf(palavraASerLocalizada, index + 1); // +1 pois quando localiza a letra, ele precisa testar na mesma string se tem mais resultados
                 if (index != -1) {
                     LocalizacaoLetra localizacaoLetra = linha.get(index);
-                    System.out.println(String.format("%s = [%s][%s]", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
+                    System.out.println(String.format("%s = [%s][%s]\n", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
                 }
             } while (index != -1);
         }
@@ -54,26 +55,26 @@ public class BuscadorDePalavras {
     private void encontrarDireitaParaEsquerda() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
-        
+
         StringBuilder sb = new StringBuilder(palavraASerLocalizada);
         stringBuilderReverso = sb.reverse();
         palavraReversa = stringBuilderReverso.toString();
-        
+
         encontrarEsquerdaParaDireita(palavraReversa);
-        
+
     }
 
     private void encontrarCimaParaBaixo(String palavraASerLocalizada) {
         for (int j = 0; j < matriz.getTamanho(); j++) {
             List<LocalizacaoLetra> coluna = matriz.getColuna(j);
             result = converteArrayDeStringEmUmaUnicaString(coluna);
-            
+
             int index = -1;
-            do {                
+            do {
                 index = result.indexOf(palavraASerLocalizada, index + 1);
                 if (index != -1) {
                     LocalizacaoLetra localizacaoLetra = coluna.get(index);
-                    System.out.println(String.format("%s = [%s][%s]", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
+                    System.out.println(String.format("%s = [%s][%s]\n", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
                 }
             } while (index != -1);
         }
@@ -82,24 +83,24 @@ public class BuscadorDePalavras {
     private void encontrarBaixoParaCima() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
-        
+
         StringBuilder sb = new StringBuilder(palavraASerLocalizada);
         stringBuilderReverso = sb.reverse();
         palavraReversa = stringBuilderReverso.toString();
-        
+
         encontrarCimaParaBaixo(palavraReversa);
     }
 
     private void encontrarDiagonalPrincipal(String palavraASerLocalizada) {
         List<LocalizacaoLetra> diagonalPricipal = matriz.getDiagonalPrincipal();
         result = converteArrayDeStringEmUmaUnicaString(diagonalPricipal);
-        
+
         int index = -1;
-        do {            
+        do {
             index = result.indexOf(palavraASerLocalizada, index + 1);
             if (index != -1) {
                 LocalizacaoLetra localizacaoLetra = diagonalPricipal.get(index);
-                System.out.println(String.format("%s = [%s][%s]", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
+                System.out.println(String.format("%s = [%s][%s]\n", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
             }
         } while (index != -1);
     }
@@ -107,25 +108,25 @@ public class BuscadorDePalavras {
     private void encontrarDiagonalPrincipalReversa() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
-        
+
         StringBuilder sb = new StringBuilder(palavraASerLocalizada);
         stringBuilderReverso = sb.reverse();
         palavraReversa = stringBuilderReverso.toString();
-        
+
         encontrarDiagonalPrincipal(palavraReversa);
-        
+
     }
 
     private void encontrarDiagonalSecundaria(String palavraASerLocalizada) {
         List<LocalizacaoLetra> diagonalSecundaria = matriz.getDiagonalSecundaria();
         result = converteArrayDeStringEmUmaUnicaString(diagonalSecundaria);
-        
+
         int index = -1;
-        do {            
+        do {
             index = result.indexOf(palavraASerLocalizada, index++);
             if (index != -1) {
                 LocalizacaoLetra localizacaoLetra = diagonalSecundaria.get(index);
-                System.out.println(String.format("%s = [%s][%s]", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
+                System.out.println(String.format("%s = [%s][%s]\n", this.palavraASerLocalizada, localizacaoLetra.getLinha(), localizacaoLetra.getColuna()));
             }
         } while (index != -1);
     }
@@ -133,11 +134,11 @@ public class BuscadorDePalavras {
     private void encontrarDiagonalSecundariaReversa() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
-        
+
         StringBuilder sb = new StringBuilder(palavraASerLocalizada);
         stringBuilderReverso = sb.reverse();
         palavraReversa = stringBuilderReverso.toString();
-        
+
         encontrarDiagonalSecundaria(palavraReversa);
     }
 

@@ -27,7 +27,7 @@ public class CacaPalavras {
         Scanner sc = new Scanner(System.in);
         BuscadorDePalavras buscadorDePalavras;
 
-        System.out.println("Digite o nome do Arquivo: ");
+        System.out.println("Digite o nome do Arquivo: \nExemplo: paises.json");
         String arquivo = sc.next();
 
         try {
