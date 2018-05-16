@@ -5,6 +5,7 @@
  */
 package Controler;
 
+import CacaPalavras.CacaPalavras;
 import Model.LocalizacaoLetra;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class Matriz {
 
-    private Integer tamanho = CacaPalavras.CacaPalavras.tamanhoMatriz;
+    private Integer tamanho = CacaPalavras.tamanhoMatriz;
     LocalizacaoLetra[][] matrizLocalizacaoLetra;
 
     public Matriz() {
@@ -39,12 +40,42 @@ public class Matriz {
     }
 
     public void mostrarMatriz() {
+        int linha = 0;
+        int coluna = 0;
+     
+        //Printar o número da Coluna da Matriz
+        for (int i = 0; i < CacaPalavras.tamanhoMatriz; i++) {
+
+            if (i == 0) {
+                System.out.print("      " + i);
+            } else if (i > 0 &&  i < 10) {
+                System.out.print("    " + i);
+            } else if (i > 99 && i < 1000) {
+                System.out.print("  " + i);
+            }else {
+                System.out.print("   " + i);
+            }
+        }
+
         for (LocalizacaoLetra[] matrizLocalizacaoLetra1 : matrizLocalizacaoLetra) {
             System.out.println();
             for (LocalizacaoLetra matrizLocalizacaoLetra11 : matrizLocalizacaoLetra1) {
+                
+                //Serve para alinhar a Matriz com espaços ao lado do número da linha
+                if (coluna == 0 && linha < 10) {
+                    System.out.print("  " + linha + " ");
+                } else if (coluna == 0 && linha > 9 && linha < 100) {
+                    System.out.print(" " + linha + " ");
+                } else if (coluna == 0 && linha > 99) {
+                    System.out.print(linha + " ");
+                }
+
+                coluna += 1;
                 System.out.printf(String.format("|_%s_|", matrizLocalizacaoLetra11.getLetra()));
                 //System.out.printf(String.format("%s[%s %s] ", matrizLocalizacaoLetra[i][j].getLetra(), matrizLocalizacaoLetra[i][j].getLinha(), matrizLocalizacaoLetra[i][j].getColuna()));
             }
+            linha += 1;
+            coluna = 0;
         }
     }
 
