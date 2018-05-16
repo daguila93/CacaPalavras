@@ -50,7 +50,7 @@ public class Matriz {
                 System.out.print("      " + i);
             } else if (i > 0 &&  i < 10) {
                 System.out.print("    " + i);
-            } else if (i > 99 && i < 1000) {
+            } else if (i > 9 && i < 100) {
                 System.out.print("  " + i);
             }else {
                 System.out.print("   " + i);
