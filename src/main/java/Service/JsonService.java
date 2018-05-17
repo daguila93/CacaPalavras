@@ -6,7 +6,7 @@
 package Service;
 
 import CacaPalavras.CacaPalavras;
-import Controler.BuscadorDePalavras;
+import Controller.BuscadorDePalavras;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileReader;

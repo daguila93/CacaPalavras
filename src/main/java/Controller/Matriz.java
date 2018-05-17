@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controler;
+package Controller;
 
 import CacaPalavras.CacaPalavras;
 import Model.LocalizacaoLetra;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class Matriz {
 
-    private Integer tamanho = CacaPalavras.tamanhoMatriz;
+    private final Integer tamanho = CacaPalavras.tamanhoMatriz;
     LocalizacaoLetra[][] matrizLocalizacaoLetra;
 
     public Matriz() {
@@ -42,25 +42,30 @@ public class Matriz {
     public void mostrarMatriz() {
         int linha = 0;
         int coluna = 0;
-     
+
         //Printar o número da Coluna da Matriz
         for (int i = 0; i < CacaPalavras.tamanhoMatriz; i++) {
 
             if (i == 0) {
                 System.out.print("      " + i);
-            } else if (i > 0 &&  i < 10) {
+            } else if (i > 0 && i < 9) {
                 System.out.print("    " + i);
-            } else if (i > 9 && i < 100) {
-                System.out.print("  " + i);
-            }else {
+            } else if (i == 9) {
+                System.out.print("    " + i + " ");
+            } else if (i > 9 && i < 99) {
                 System.out.print("   " + i);
+            } else if (i == 99) {
+                System.out.print("   " + i + " ");
+            } else if (i > 99 && i < 999) {
+                System.out.print("  " + i);
             }
+
         }
 
         for (LocalizacaoLetra[] matrizLocalizacaoLetra1 : matrizLocalizacaoLetra) {
             System.out.println();
             for (LocalizacaoLetra matrizLocalizacaoLetra11 : matrizLocalizacaoLetra1) {
-                
+
                 //Serve para alinhar a Matriz com espaços ao lado do número da linha
                 if (coluna == 0 && linha < 10) {
                     System.out.print("  " + linha + " ");
@@ -123,9 +128,6 @@ public class Matriz {
         return diagonalSecundaria;
     }
 
-    // getLinha(indice da linha)               Feito
-    // getColuna(indice da coluna)             Feito
-    // getDiagonal(boolean diagonalReversa?)   Fazer
     public Integer getTamanho() {
         return tamanho;
     }

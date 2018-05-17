@@ -5,7 +5,7 @@
  */
 package CacaPalavras;
 
-import Controler.BuscadorDePalavras;
+import Controller.BuscadorDePalavras;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.InputMismatchException;
@@ -34,7 +34,6 @@ public class CacaPalavras {
             new FileReader(arquivo);
             System.out.println("Arquivo JSON carregado com Sucesso!\n");
             CacaPalavras.caminho = arquivo;
-
             try {
                 System.out.println("Digite o tamanho da Matriz: ");
                 tamanhoMatriz = sc.nextInt();
@@ -46,7 +45,6 @@ public class CacaPalavras {
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado. Tente: paises.json");
         }
-
         System.out.println();
     }
 }
