@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package CacaPalavras;
+package View;
 
 import Controller.BuscadorDePalavras;
 import java.io.FileNotFoundException;
@@ -15,7 +15,7 @@ import java.util.Scanner;
  *
  * @author edil
  */
-public class CacaPalavras {
+public class Main {
 
     /**
      * @param args the command line arguments
@@ -33,7 +33,7 @@ public class CacaPalavras {
         try {
             new FileReader(arquivo);
             System.out.println("Arquivo JSON carregado com Sucesso!\n");
-            CacaPalavras.caminho = arquivo;
+            Main.caminho = arquivo;
             try {
                 System.out.println("Digite o tamanho da Matriz: ");
                 tamanhoMatriz = sc.nextInt();

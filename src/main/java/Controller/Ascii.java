@@ -13,7 +13,7 @@ import static org.apache.commons.lang.RandomStringUtils.randomAlphabetic;
  */
 public class Ascii {
 
-    public String caracterASCIIAleatorio() {
+    public String caractereASCIIAleatorio() {
         return randomAlphabetic(1).toLowerCase();
     }
 }

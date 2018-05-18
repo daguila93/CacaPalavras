@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import CacaPalavras.CacaPalavras;
+import View.Main;
 import Model.LocalizacaoLetra;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class Matriz {
 
-    private final Integer tamanho = CacaPalavras.tamanhoMatriz;
+    private final Integer tamanho = Main.tamanhoMatriz;
     LocalizacaoLetra[][] matrizLocalizacaoLetra;
 
     public Matriz() {
@@ -31,7 +31,7 @@ public class Matriz {
                 LocalizacaoLetra localizacaoLetra = new LocalizacaoLetra();
                 localizacaoLetra.setLinha(i);
                 localizacaoLetra.setColuna(j);
-                localizacaoLetra.setLetra(objetoCaractere.caracterASCIIAleatorio());
+                localizacaoLetra.setLetra(objetoCaractere.caractereASCIIAleatorio());
 
                 matriz[i][j] = localizacaoLetra;
             }
@@ -44,7 +44,7 @@ public class Matriz {
         int coluna = 0;
 
         //Printar o número da Coluna da Matriz
-        for (int i = 0; i < CacaPalavras.tamanhoMatriz; i++) {
+        for (int i = 0; i < Main.tamanhoMatriz; i++) {
 
             if (i == 0) {
                 System.out.print("      " + i);

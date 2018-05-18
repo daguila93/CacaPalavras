@@ -5,7 +5,7 @@
  */
 package Service;
 
-import CacaPalavras.CacaPalavras;
+import View.Main;
 import Controller.BuscadorDePalavras;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,7 +29,7 @@ public class JsonService {
     private List<String> lerArquivoJson() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            paises = objectMapper.readValue(new FileReader(CacaPalavras.caminho), new TypeReference<List<String>>() {
+            paises = objectMapper.readValue(new FileReader(Main.caminho), new TypeReference<List<String>>() {
             });
         } catch (IOException e) {
         }

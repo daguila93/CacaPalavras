@@ -36,7 +36,7 @@ public final class BuscadorDePalavras {
         }
     }
 
-    private void encontrarEsquerdaParaDireita(String palavraASerLocalizada) {
+    private void encontrarPalavraEsquerdaParaDireita(String palavraASerLocalizada) {
         for (int i = 0; i < matriz.getTamanho(); i++) {
             List<LocalizacaoLetra> linha = matriz.getLinha(i);
             result = converteArrayDeStringEmUmaUnicaString(linha);
@@ -52,7 +52,7 @@ public final class BuscadorDePalavras {
         }
     }
 
-    private void encontrarDireitaParaEsquerda() {
+    private void encontrarPalavraDireitaParaEsquerda() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
 
@@ -60,11 +60,11 @@ public final class BuscadorDePalavras {
         stringBuilderReverso = sb.reverse();
         palavraReversa = stringBuilderReverso.toString();
 
-        encontrarEsquerdaParaDireita(palavraReversa);
+        encontrarPalavraEsquerdaParaDireita(palavraReversa);
 
     }
 
-    private void encontrarCimaParaBaixo(String palavraASerLocalizada) {
+    private void encontrarPalavraCimaParaBaixo(String palavraASerLocalizada) {
         for (int j = 0; j < matriz.getTamanho(); j++) {
             List<LocalizacaoLetra> coluna = matriz.getColuna(j);
             result = converteArrayDeStringEmUmaUnicaString(coluna);
@@ -80,7 +80,7 @@ public final class BuscadorDePalavras {
         }
     }
 
-    private void encontrarBaixoParaCima() {
+    private void encontrarPalavraBaixoParaCima() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
 
@@ -88,10 +88,10 @@ public final class BuscadorDePalavras {
         stringBuilderReverso = sb.reverse();
         palavraReversa = stringBuilderReverso.toString();
 
-        encontrarCimaParaBaixo(palavraReversa);
+        encontrarPalavraCimaParaBaixo(palavraReversa);
     }
 
-    private void encontrarDiagonalPrincipal(String palavraASerLocalizada) {
+    private void encontrarPalavraDiagonalPrincipal(String palavraASerLocalizada) {
         List<LocalizacaoLetra> diagonalPricipal = matriz.getDiagonalPrincipal();
         result = converteArrayDeStringEmUmaUnicaString(diagonalPricipal);
 
@@ -105,7 +105,7 @@ public final class BuscadorDePalavras {
         } while (index != -1);
     }
 
-    private void encontrarDiagonalPrincipalReversa() {
+    private void encontrarPalavraDiagonalPrincipalReversa() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
 
@@ -113,11 +113,11 @@ public final class BuscadorDePalavras {
         stringBuilderReverso = sb.reverse();
         palavraReversa = stringBuilderReverso.toString();
 
-        encontrarDiagonalPrincipal(palavraReversa);
+        encontrarPalavraDiagonalPrincipal(palavraReversa);
 
     }
 
-    private void encontrarDiagonalSecundaria(String palavraASerLocalizada) {
+    private void encontrarPalavraDiagonalSecundaria(String palavraASerLocalizada) {
         List<LocalizacaoLetra> diagonalSecundaria = matriz.getDiagonalSecundaria();
         result = converteArrayDeStringEmUmaUnicaString(diagonalSecundaria);
 
@@ -131,7 +131,7 @@ public final class BuscadorDePalavras {
         } while (index != -1);
     }
 
-    private void encontrarDiagonalSecundariaReversa() {
+    private void encontrarPalavraDiagonalSecundariaReversa() {
         StringBuilder stringBuilderReverso;
         String palavraReversa;
 
@@ -139,18 +139,18 @@ public final class BuscadorDePalavras {
         stringBuilderReverso = sb.reverse();
         palavraReversa = stringBuilderReverso.toString();
 
-        encontrarDiagonalSecundaria(palavraReversa);
+        encontrarPalavraDiagonalSecundaria(palavraReversa);
     }
 
     public void buscaPalavra(String palavraASerLocalizada) {
-        encontrarEsquerdaParaDireita(palavraASerLocalizada);
-        encontrarDireitaParaEsquerda();
-        encontrarCimaParaBaixo(palavraASerLocalizada);
-        encontrarBaixoParaCima();
-        encontrarDiagonalPrincipal(palavraASerLocalizada);
-        encontrarDiagonalPrincipalReversa();
-        encontrarDiagonalSecundaria(palavraASerLocalizada);
-        encontrarDiagonalSecundariaReversa();
+        encontrarPalavraEsquerdaParaDireita(palavraASerLocalizada);
+        encontrarPalavraDireitaParaEsquerda();
+        encontrarPalavraCimaParaBaixo(palavraASerLocalizada);
+        encontrarPalavraBaixoParaCima();
+        encontrarPalavraDiagonalPrincipal(palavraASerLocalizada);
+        encontrarPalavraDiagonalPrincipalReversa();
+        encontrarPalavraDiagonalSecundaria(palavraASerLocalizada);
+        encontrarPalavraDiagonalSecundariaReversa();
     }
 
     public void mostrarMatriz() {
