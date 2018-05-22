@@ -18,7 +18,6 @@ import java.util.Scanner;
 public class Main {
 
     /**
-     * @param args the command line arguments
      */
     public static String caminho;
     public static Integer tamanhoMatriz = 0;
@@ -34,16 +33,15 @@ public class Main {
             new FileReader(arquivo);
             System.out.println("Arquivo JSON carregado com Sucesso!\n");
             Main.caminho = arquivo;
-            try {
-                System.out.println("Digite o tamanho da Matriz: ");
-                tamanhoMatriz = sc.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Digite somente números Inteiros!");
-                e.getMessage();
-            }
+            System.out.println("Digite o tamanho da Matriz: ");
+            tamanhoMatriz = sc.nextInt();
             buscadorDePalavras = new BuscadorDePalavras();
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado. Tente: paises.json");
+            e.getMessage();
+        } catch (InputMismatchException e) {
+            System.out.println("Digite somente números Inteiros!");
+            e.getMessage();
         }
         System.out.println();
     }
